@@ -16,5 +16,19 @@
     <string name="cpu_stoped">stoped</string>
     <string name="gpu_vendor">GPU Vendor</string>
     <string name="gpu_renderer">GPU Renderer</string>
+    
+    <!-- System information -->
+    <string name="system_brand">Brand</string>
+    <string name="system_model">Model</string>
+    <string name="system_manufacturer">Manufacturer</string>
+    <string name="system_board">Board</string>
+    <string name="system_display">Display</string>
+    <string name="system_hardware">Hardware</string>
+    <string name="system_android_version">Android Version</string>
+    <string name="system_kernel_arch">Kernel Architecture</string>
+    <string name="system_kernel_version">Kernel Version</string>
+    <string name="system_screen_resolution">Screen Resolution</string>
+    <string name="system_real_resolution">Real Resolution</string>
+    <string name="system_screen_density">Screen Density</string>
 
 </resources>

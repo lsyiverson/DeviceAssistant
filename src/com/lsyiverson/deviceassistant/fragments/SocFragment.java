@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
@@ -15,14 +14,6 @@ import com.lsyiverson.deviceassistant.utils.CpuUtils;
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
 
 public class SocFragment extends BaseInfoFragment {
-
-
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-        super.onActivityCreated(savedInstanceState);
-    }
 
     @Override
     protected List<Map<String, Object>> getData() {

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lsyiverson.deviceassistant.fragments.SocFragment;
+import com.lsyiverson.deviceassistant.fragments.SystemFragment;
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
 import com.lsyiverson.deviceassistant.utils.LogUtils;
 
@@ -122,6 +123,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             switch (position) {
                 case 0:
                     return new SocFragment();
+                case 1:
+                    return new SystemFragment();
                 default:
                     Fragment fragment = new DummySectionFragment();
                     Bundle args = new Bundle();
