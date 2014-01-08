@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DeviceAssistant</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Soc</string>
+    <string name="title_section2">System</string>
+    <string name="title_section3">Section 3</string>
+    
+    <!-- Soc information -->
+    <string name="cpu_processor">Processor</string>
+    <string name="cpu_core_count">CPU Cores</string>
+    <string name="cpu_revision">Revision</string>
+    <string name="cpu_clock_speed">Clock Speed</string>
+    <string name="cpu_cores">&#160;&#160;&#160;&#160;Core %d</string>
+    <string name="cpu_stoped">stoped</string>
+    <string name="gpu_vendor">GPU Vendor</string>
+    <string name="gpu_renderer">GPU Renderer</string>
+
+</resources>
