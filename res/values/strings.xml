@@ -30,5 +30,12 @@
     <string name="system_screen_resolution">Screen Resolution</string>
     <string name="system_real_resolution">Real Resolution</string>
     <string name="system_screen_density">Screen Density</string>
+    <string name="system_total_ram">Total RAM</string>
+    <string name="system_available_ram">Available RAM</string>
+    <string name="system_internal_storage">Internal Storage</string>
+    <string name="system_available_storage">Available Storage</string>
+    <string name="system_root_access">Root Access</string>
+    <string name="system_root_yes">Yes</string>
+    <string name="system_root_no">No</string>
 
 </resources>

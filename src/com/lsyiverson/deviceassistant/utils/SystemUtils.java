@@ -1,6 +1,7 @@
 package com.lsyiverson.deviceassistant.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,9 +10,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
+import android.os.Environment;
+import android.os.StatFs;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyCharacterMap;
@@ -22,7 +27,15 @@ import android.view.WindowManager;
 import com.lsyiverson.deviceassistant.R;
 
 public class SystemUtils {
-    private static final String DPI = "dpi";
+    private static final String DPI = " dpi";
+
+    private static final String B = " B";
+
+    private static final String KB = " KB";
+
+    private static final String MB = " MB";
+
+    private static final String GB = " GB";
 
     private static final String MEMINFO_PATH = "/proc/meminfo";
 
@@ -86,8 +99,88 @@ public class SystemUtils {
         // Show screen resolution
         systemInfo.addAll(getScreenResolution(context));
 
-        getMemInfo(context);
+        // Show RAM information
+        systemInfo.addAll(getMemInfo(context));
+
+        // Show internal storage information
+        systemInfo.addAll(getStorageInfo(context));
+
+        HashMap<String, Object> is_root = new HashMap<String, Object>();
+        is_root.put(Constants.LIST_NAME, context.getString(R.string.system_root_access));
+        is_root.put(Constants.LIST_VALUE, isRoot() ? context.getString(R.string.system_root_yes)
+                : context.getString(R.string.system_root_no));
+        systemInfo.add(is_root);
+
         return systemInfo;
+    }
+
+    /**
+     * is the device ROOT
+     */
+    private static boolean isRoot() {
+        boolean root = false;
+        try {
+            if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
+                root = false;
+            } else {
+                root = true;
+            }
+        } catch (Exception e) {
+        }
+        return root;
+    }
+
+    public static ArrayList<HashMap<String, Object>> getStorageInfo(Context context) {
+        ArrayList<HashMap<String, Object>> storageInfo = new ArrayList<HashMap<String, Object>>();
+        File path = Environment.getDataDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long totalBlocks = stat.getBlockCount();
+        long availableBlocks = stat.getAvailableBlocks();
+
+        long totalSize = totalBlocks * blockSize;
+        long availableSize = availableBlocks * blockSize;
+        LogUtils.d(SystemUtils.class, "Total size : " + formatSize(totalSize)
+                + ", Available size : " + formatSize(availableSize));
+
+        long percent = availableSize * 100 / totalSize;
+
+        HashMap<String, Object> total_storage = new HashMap<String, Object>();
+        total_storage.put(Constants.LIST_NAME, context.getString(R.string.system_internal_storage));
+        total_storage.put(Constants.LIST_VALUE, formatSize(totalSize));
+        storageInfo.add(total_storage);
+
+        HashMap<String, Object> available_storage = new HashMap<String, Object>();
+        available_storage.put(Constants.LIST_NAME,
+                context.getString(R.string.system_available_storage));
+        available_storage.put(Constants.LIST_VALUE, formatSize(availableSize) + " (" + percent
+                + "%)");
+        storageInfo.add(available_storage);
+
+        return storageInfo;
+    }
+
+    private static String formatSize(long size) {
+        String suffix = B;
+        double fsize = 0;
+        if (size >= 1024) {
+            suffix = KB;
+            fsize = size / 1024.00;
+            if (fsize >= 1024) {
+                suffix = MB;
+                fsize /= 1024.00;
+            }
+
+            if (fsize >= 1024) {
+                suffix = GB;
+                fsize /= 1024.00;
+            }
+        } else {
+            fsize = size;
+        }
+        StringBuilder resultBuilder = new StringBuilder(String.format("%.2f", fsize));
+        resultBuilder.append(suffix);
+        return resultBuilder.toString();
     }
 
     public static ArrayList<HashMap<String, Object>> getMemInfo(Context context) {
@@ -97,37 +190,52 @@ public class SystemUtils {
             FileReader fr = new FileReader(MEMINFO_PATH);
             BufferedReader localBufferedReader = new BufferedReader(fr, 8192);
             long totalMemo = 0;
-            long freeMemo = 0;
+            long availMemo = 0;
             while ((str = localBufferedReader.readLine()) != null) {
                 String[] item = str.split(":\\s+");
                 if (item.length == 2) {
                     String name = item[0].trim();
                     String value = item[1].trim();
                     if (name.equals("MemTotal")) {
-                        LogUtils.d(SystemUtils.class, "Total memory = " + value);
                         Pattern p = Pattern.compile("^\\d+");
                         Matcher m = p.matcher(value);
                         if (m.find()) {
-                            totalMemo = Long.parseLong(m.group());
+                            totalMemo = Long.parseLong(m.group()) << 10;
                         }
-                        LogUtils.d(SystemUtils.class, "Total memory = " + totalMemo);
-                    } else if (name.equals("MemFree")) {
-                        LogUtils.d(SystemUtils.class, "Total free = " + value);
-                        Pattern p = Pattern.compile("^\\d+");
-                        Matcher m = p.matcher(value);
-                        if (m.find()) {
-                            freeMemo = Long.parseLong(m.group());
-                        }
-                        LogUtils.d(SystemUtils.class, "Total free = " + freeMemo);
+                        LogUtils.d(SystemUtils.class, "Total memory = " + fromByte2MB(totalMemo));
                         break;
                     }
                 }
             }
             localBufferedReader.close();
+
+            ActivityManager am = (ActivityManager)context
+                    .getSystemService(Context.ACTIVITY_SERVICE);
+            MemoryInfo mi = new MemoryInfo();
+            am.getMemoryInfo(mi);
+            availMemo = mi.availMem;
+            LogUtils.d(SystemUtils.class, "available memory = " + fromByte2MB(availMemo));
+            long percent = availMemo * 100 / totalMemo;
+            LogUtils.d(SystemUtils.class, "available percent = " + percent);
+
+            HashMap<String, Object> total_ram = new HashMap<String, Object>();
+            total_ram.put(Constants.LIST_NAME, context.getString(R.string.system_total_ram));
+            total_ram.put(Constants.LIST_VALUE, fromByte2MB(totalMemo));
+            memInfo.add(total_ram);
+
+            HashMap<String, Object> avail_ram = new HashMap<String, Object>();
+            avail_ram.put(Constants.LIST_NAME, context.getString(R.string.system_available_ram));
+            avail_ram.put(Constants.LIST_VALUE, fromByte2MB(availMemo) + " (" + percent + "%)");
+            memInfo.add(avail_ram);
         }catch (IOException ex) {
 
         }
         return memInfo;
+    }
+
+    private static String fromByte2MB(long size_kb) {
+        long size_mb = size_kb >> 20;
+                            return size_mb + MB;
     }
 
     @SuppressLint("NewApi")

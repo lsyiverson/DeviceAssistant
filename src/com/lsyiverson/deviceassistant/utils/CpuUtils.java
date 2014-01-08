@@ -116,7 +116,7 @@ public class CpuUtils {
             curCpuFreq = parseCpuFreqToMHz(minFreq);
             localBufferedReader.close();
         } catch (IOException ex) {
-            ex.printStackTrace();
+            // ex.printStackTrace();
             return null;
         }
         return curCpuFreq;
