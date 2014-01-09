@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.lsyiverson.deviceassistant.fragments.BatteryFragment;
 import com.lsyiverson.deviceassistant.fragments.SocFragment;
 import com.lsyiverson.deviceassistant.fragments.SystemFragment;
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
@@ -125,6 +126,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return new SocFragment();
                 case 1:
                     return new SystemFragment();
+                case 2:
+                    return new BatteryFragment();
                 default:
                     Fragment fragment = new DummySectionFragment();
                     Bundle args = new Bundle();
