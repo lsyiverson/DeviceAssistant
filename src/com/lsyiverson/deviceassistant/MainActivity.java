@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lsyiverson.deviceassistant.fragments.BatteryFragment;
+import com.lsyiverson.deviceassistant.fragments.SensorsFragment;
 import com.lsyiverson.deviceassistant.fragments.SocFragment;
 import com.lsyiverson.deviceassistant.fragments.SystemFragment;
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
@@ -128,6 +129,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return new SystemFragment();
                 case 2:
                     return new BatteryFragment();
+                case 3:
+                    return new SensorsFragment();
                 default:
                     Fragment fragment = new DummySectionFragment();
                     Bundle args = new Bundle();
@@ -140,7 +143,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -153,6 +156,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                     return getString(R.string.title_section2).toUpperCase(l);
                 case 2:
                     return getString(R.string.title_section3).toUpperCase(l);
+                case 3:
+                    return getString(R.string.title_section4).toUpperCase(l);
             }
             return null;
         }

@@ -6,6 +6,7 @@
     <string name="title_section1">Soc</string>
     <string name="title_section2">System</string>
     <string name="title_section3">Battery</string>
+    <string name="title_section4">Sensor</string>
     
     <!-- Soc information -->
     <string name="cpu_processor">Processor</string>

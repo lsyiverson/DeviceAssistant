@@ -26,7 +26,6 @@ public abstract class BaseInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_base, container, false);
         ListView info_list = (ListView)rootView.findViewById(R.id.info);
-        info_list.setClickable(false);
         getData();
         mAdapter = new SimpleAdapter(getActivity(), mList, R.layout.simple_info_item, new String[] {Constants.LIST_NAME, Constants.LIST_VALUE},
                 new int[] { R.id.info_name, R.id.info_value});
