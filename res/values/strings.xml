@@ -71,5 +71,22 @@
     <string name="battery_voltage">Voltage</string>
     
     <string name="battery_scale">Max Battery Level</string>
+    
+    <!-- Sensor information -->
+    <string name="sensor_current_consumption">Current Consumption: %.2f mA</string>
+    <string name="sensor_xyz_acceleration">X=%1$.2f m/s&#178; Y=%2$.2f m/s&#178; Z=%3$.2f m/s&#178;</string>
+    <string name="sensor_temperature_celsius">%.1f ℃</string>
+    <string name="sensor_temperature_fahrenheit">%.1f ℉</string>
+    <string name="sensor_xyz">X=%1$s Y=%2$s Z=%3$s</string>
+    <string name="sensor_xyz_gyroscore">X=%1$.2f rad/s Y=%2$.2f rad/s Z=%3$.2f rad/s</string>
+    <string name="sensor_xyz_gyroscore_estimated_drift">Estimated Drift X=%1$.2f rad/s Y=%2$.2f rad/s Z=%3$.2f rad/s</string>
+    <string name="sensor_light">%.2f lux</string>
+    <string name="sensor_xyz_magnetic_field">X=%1$.2f μT Y=%2$.2f μT Z=%3$.2f μT</string>
+    <string name="sensor_xyz_magnetic_field_bias">Estimated Bias X=%1$.2f μT Y=%2$.2f μT Z=%3$.2f μT</string>
+    <string name="sensor_orientation">Azimuth=%1$.2f° Pitch=%2$.2f° Roll=%3$.2f°</string>
+    <string name="sensor_pressure">%.2f hPa</string>
+    <string name="sensor_proximity">%.2f cm</string>
+    <string name="sensor_relative_humidity">%.2f&#37;</string>
+    <string name="sensor_step">%.1f step(s)</string>
 
 </resources>
