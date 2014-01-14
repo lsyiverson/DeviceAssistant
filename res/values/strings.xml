@@ -7,6 +7,7 @@
     <string name="title_section2">System</string>
     <string name="title_section3">Battery</string>
     <string name="title_section4">Sensor</string>
+    <string name="title_section5">Network</string>
     
     <!-- Soc information -->
     <string name="cpu_processor">Processor</string>
@@ -88,5 +89,23 @@
     <string name="sensor_proximity">%.2f cm</string>
     <string name="sensor_relative_humidity">%.2f&#37;</string>
     <string name="sensor_step">%.1f step(s)</string>
+    
+    <!-- Network information -->
+    <string name="network_operator_name">Operator Name</string>
+    <string name="network_operator_none">None</string>
+    <string name="network_type_bluetooth">Bluetooth</string>
+    <string name="network_type_dummy">Dummy</string>
+    <string name="network_type_ethernet">Ethernet</string>
+    <string name="network_type_mobile">Mobile</string>
+    <string name="network_type_wifi">Wifi</string>
+    <string name="network_type_wimax">WiMAX</string>
+    <string name="network_type">Network Type</string>
+    <string name="network_no_network">No Network</string>
+    <string name="network_access_point">Access Point</string>
+    <string name="network_mac_address">Mac Address</string>
+    <string name="network_phone_number">Phone Number</string>
+    <string name="network_imei">IMEI/MEID</string>
+    <string name="network_imsi">IMSI</string>
+    <string name="network_sim_card_number">SIM Card Number</string>
 
 </resources>
