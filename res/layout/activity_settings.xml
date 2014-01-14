@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity" >
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_temperature_unit"
+            android:textSize="20sp"
+            />
+        <RadioGroup android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:id="@+id/temperature_group"
+            android:orientation="horizontal">
+            <RadioButton android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:id="@+id/celsius"
+                android:text="@string/celsius"
+                android:layout_weight="1"/>
+            <RadioButton android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/fahrenheit"
+                android:textSize="16sp"
+                android:text="@string/fahrenheit"
+                android:layout_weight="1"/>
+        </RadioGroup>
+        
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#99333333"/>
+
+</LinearLayout>

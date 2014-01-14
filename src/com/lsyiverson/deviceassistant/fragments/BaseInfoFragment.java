@@ -34,8 +34,10 @@ public abstract class BaseInfoFragment extends Fragment {
     }
 
     public void notifyDataSetChanged() {
-        synchronized (mAdapter) {
-            mAdapter.notifyDataSetChanged();
+        if (mAdapter != null) {
+            synchronized (mAdapter) {
+                mAdapter.notifyDataSetChanged();
+            }
         }
     }
 

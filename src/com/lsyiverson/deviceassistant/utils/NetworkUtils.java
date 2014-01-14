@@ -75,6 +75,12 @@ public class NetworkUtils {
                     NetworkInfo mobileInfo = conManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
                     apntype = mobileInfo.getExtraInfo();
                     break;
+                case ConnectivityManager.TYPE_BLUETOOTH:
+                    apntype = context.getString(R.string.network_type_bluetooth);
+                    break;
+                case ConnectivityManager.TYPE_ETHERNET:
+                    apntype = context.getString(R.string.network_type_ethernet);
+                    break;
                 case 999:
                     apntype = context.getString(R.string.network_no_network);
                     break;

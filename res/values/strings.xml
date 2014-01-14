@@ -8,7 +8,7 @@
     <string name="title_section3">Battery</string>
     <string name="title_section4">Sensor</string>
     <string name="title_section5">Network</string>
-    
+
     <!-- Soc information -->
     <string name="cpu_processor">Processor</string>
     <string name="cpu_core_count">CPU Cores</string>
@@ -18,7 +18,7 @@
     <string name="cpu_stoped">stoped</string>
     <string name="gpu_vendor">GPU Vendor</string>
     <string name="gpu_renderer">GPU Renderer</string>
-    
+
     <!-- System information -->
     <string name="system_brand">Brand</string>
     <string name="system_model">Model</string>
@@ -39,7 +39,7 @@
     <string name="system_root_access">Root Access</string>
     <string name="system_root_yes">Yes</string>
     <string name="system_root_no">No</string>
-    
+
     <!-- System information -->
     <string name="battery_health">Health</string>
     <string name="battery_health_cold">Cold</string>
@@ -49,30 +49,23 @@
     <string name="battery_health_over_voltage">Over Voltage</string>
     <string name="battery_health_unknown">Unknown</string>
     <string name="battery_health_unspecified_failure">Unspecified Failure</string>
-
     <string name="battery_level">Level</string>
-
     <string name="battery_plugged">Power Source</string>
     <string name="battery_plugged_non">Battery</string>
     <string name="battery_plugged_ac">AC charger</string>
     <string name="battery_plugged_usb">USB port</string>
     <string name="battery_plugged_wireless">Wireless</string>
-    
     <string name="battery_status">Status</string>
     <string name="battery_status_charging">Charging</string>
     <string name="battery_status_discharging">Discharging</string>
     <string name="battery_status_full">Full</string>
     <string name="battery_status_not_charging">Not Charging</string>
     <string name="battery_status_unknown">Unknown</string>
-    
     <string name="battery_technology">Technology</string>
-    
     <string name="battery_temperature">Temperature</string>
-    
     <string name="battery_voltage">Voltage</string>
-    
     <string name="battery_scale">Max Battery Level</string>
-    
+
     <!-- Sensor information -->
     <string name="sensor_current_consumption">Current Consumption: %.2f mA</string>
     <string name="sensor_xyz_acceleration">X=%1$.2f m/s&#178; Y=%2$.2f m/s&#178; Z=%3$.2f m/s&#178;</string>
@@ -89,7 +82,7 @@
     <string name="sensor_proximity">%.2f cm</string>
     <string name="sensor_relative_humidity">%.2f&#37;</string>
     <string name="sensor_step">%.1f step(s)</string>
-    
+
     <!-- Network information -->
     <string name="network_operator_name">Operator Name</string>
     <string name="network_operator_none">None</string>
@@ -107,5 +100,11 @@
     <string name="network_imei">IMEI/MEID</string>
     <string name="network_imsi">IMSI</string>
     <string name="network_sim_card_number">SIM Card Number</string>
+    
+    
+    <string name="title_activity_settings">Settings</string>
+    <string name="settings_temperature_unit">Temperature Unit</string>
+    <string name="celsius">Celsius</string>
+    <string name="fahrenheit">Fahrenheit</string>
 
 </resources>
