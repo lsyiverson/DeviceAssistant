@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 
 import com.lsyiverson.deviceassistant.fragments.BatteryFragment;
 import com.lsyiverson.deviceassistant.fragments.NetworkFragment;
@@ -40,6 +41,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      * The {@link ViewPager} that will host the section contents.
      */
     ViewPager mViewPager;
+
+    RelativeLayout mAdContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 actionBar.setSelectedNavigationItem(position);
             }
         });
+
+        mAdContainer = (RelativeLayout)findViewById(R.id.ad_container);
 
         // For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
