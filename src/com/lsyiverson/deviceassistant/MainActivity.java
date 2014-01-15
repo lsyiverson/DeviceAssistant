@@ -12,12 +12,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.lsyiverson.deviceassistant.fragments.BatteryFragment;
 import com.lsyiverson.deviceassistant.fragments.NetworkFragment;
@@ -26,6 +22,7 @@ import com.lsyiverson.deviceassistant.fragments.SocFragment;
 import com.lsyiverson.deviceassistant.fragments.SystemFragment;
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
 import com.lsyiverson.deviceassistant.utils.LogUtils;
+import com.umeng.analytics.MobclickAgent;
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -49,7 +46,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LogUtils.setLogLevel(LogUtils.VERBOSE);
+        MobclickAgent.setDebugMode(false);
+        LogUtils.setLogLevel(LogUtils.NONE);
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -146,11 +144,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                 case 4:
                     return new NetworkFragment();
                 default:
-                    Fragment fragment = new DummySectionFragment();
-                    Bundle args = new Bundle();
-                    args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position + 1);
-                    fragment.setArguments(args);
-                    return fragment;
+                    return null;
             }
         }
 
@@ -179,28 +173,16 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
     }
 
-    /**
-     * A dummy fragment representing a section of the app, but that simply
-     * displays dummy text.
-     */
-    public static class DummySectionFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        public static final String ARG_SECTION_NUMBER = "section_number";
+    @Override
+    protected void onPause() {
+        MobclickAgent.onPause(this);
+        super.onPause();
+    }
 
-        public DummySectionFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_dummy, container, false);
-            TextView dummyTextView = (TextView)rootView.findViewById(R.id.section_label);
-            dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
+    @Override
+    protected void onResume() {
+        MobclickAgent.onResume(this);
+        super.onResume();
     }
 
 }

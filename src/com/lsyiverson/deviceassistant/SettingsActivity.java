@@ -8,6 +8,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.lsyiverson.deviceassistant.utils.BatteryUtils;
+import com.umeng.analytics.MobclickAgent;
 
 public class SettingsActivity extends ActionBarActivity {
     private RadioGroup mTemperatureUnit;
@@ -35,12 +36,19 @@ public class SettingsActivity extends ActionBarActivity {
 
     @Override
     protected void onResume() {
+        MobclickAgent.onResume(this);
         if (BatteryUtils.getUseCelsius(this)) {
             mTemperatureUnit.check(R.id.celsius);
         } else {
             mTemperatureUnit.check(R.id.fahrenheit);
         }
         super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        MobclickAgent.onPause(this);
+        super.onPause();
     }
 
     @Override
