@@ -4,6 +4,7 @@ package com.lsyiverson.deviceassistant;
 import java.util.Locale;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,6 +16,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.RelativeLayout;
+import cn.domob.android.ads.DomobAdView;
+import cn.domob.android.ads.DomobUpdater;
 
 import com.lsyiverson.deviceassistant.fragments.BatteryFragment;
 import com.lsyiverson.deviceassistant.fragments.NetworkFragment;
@@ -43,6 +46,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     ViewPager mViewPager;
 
     RelativeLayout mAdContainer;
+
+    DomobAdView mAdView;
+
+    /**
+     * The Ad publisher id of Domob;
+     */
+    static final String PUBLISHER_ID = "56OJzuCIuNJUDzJcJR";
+
+    static final String INLINEPPID = "16TLmNLoApEHYNUfOZ20Xwni";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +87,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         });
 
         mAdContainer = (RelativeLayout)findViewById(R.id.ad_container);
+        mAdView = new DomobAdView(this, PUBLISHER_ID, INLINEPPID, DomobAdView.INLINE_SIZE_FLEXIBLE);
+
+        mAdContainer.addView(mAdView);
 
         // For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
@@ -88,6 +103,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         if (GpuUtils.getInstance(this).getRenderer() == null) {
             startActivity(new Intent(this, RendererLoader.class));
         }
+
+        DomobUpdater.checkUpdate(this, PUBLISHER_ID);
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mAdView.orientationChanged();
     }
 
     @Override

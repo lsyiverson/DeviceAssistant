@@ -4,14 +4,19 @@ package com.lsyiverson.deviceassistant;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.lsyiverson.deviceassistant.fragments.SensorsFragment;
 import com.lsyiverson.deviceassistant.utils.BatteryUtils;
 import com.umeng.analytics.MobclickAgent;
 
 public class SettingsActivity extends ActionBarActivity {
     private RadioGroup mTemperatureUnit;
+
+    private CheckBox mDisplayCurrentCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,15 @@ public class SettingsActivity extends ActionBarActivity {
                 }
             }
         });
+        mDisplayCurrentCheckBox = (CheckBox)findViewById(R.id.current_check);
+        mDisplayCurrentCheckBox
+        .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SensorsFragment.setDisplayCurrent(SettingsActivity.this, isChecked);
+            }
+        });
     }
 
     @Override
@@ -42,6 +56,7 @@ public class SettingsActivity extends ActionBarActivity {
         } else {
             mTemperatureUnit.check(R.id.fahrenheit);
         }
+        mDisplayCurrentCheckBox.setChecked(SensorsFragment.getDisplayCurrent(this));
         super.onResume();
     }
 

@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 
 import com.lsyiverson.deviceassistant.utils.GpuUtils;
 
@@ -47,9 +46,6 @@ public class RendererLoader extends Activity {
             float g = aleatorio.nextFloat();
             float b = aleatorio.nextFloat();
             gl.glClearColor(r, g, b, 1.0f);
-
-            Log.d("debug", "lisy=================renderer:" + gl.glGetString(GL10.GL_RENDERER));
-            Log.d("debug", "lisy=================vendor:" + gl.glGetString(GL10.GL_VENDOR));
 
             GpuUtils.getInstance(RendererLoader.this).setRenderer(gl.glGetString(GL10.GL_RENDERER));
             GpuUtils.getInstance(RendererLoader.this).setVendor(gl.glGetString(GL10.GL_VENDOR));

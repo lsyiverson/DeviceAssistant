@@ -1,44 +1,99 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context=".SettingsActivity" >
 
-    <LinearLayout android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_temperature_unit"
-            android:textSize="20sp"
-            />
-        <RadioGroup android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:id="@+id/temperature_group"
-            android:orientation="horizontal">
-            <RadioButton android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:id="@+id/celsius"
-                android:text="@string/celsius"
-                android:layout_weight="1"/>
-            <RadioButton android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/fahrenheit"
-                android:textSize="16sp"
-                android:text="@string/fahrenheit"
-                android:layout_weight="1"/>
-        </RadioGroup>
-        
-    </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#99333333"/>
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_temperature_unit"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/temperature_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <RadioButton
+                    android:id="@+id/celsius"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/celsius"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/fahrenheit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/fahrenheit"
+                    android:textSize="16sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#99333333" />
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_sensor_current"
+                android:textSize="20sp" />
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+            <CheckBox android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/display_current"
+                android:textSize="16sp"
+                android:id="@+id/current_check"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#99333333" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/copyright" />
+    </LinearLayout>
+
+</RelativeLayout>

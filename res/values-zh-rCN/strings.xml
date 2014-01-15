@@ -112,4 +112,8 @@
     <string name="settings_temperature_unit">温度单位</string>
     <string name="celsius">摄氏温度</string>
     <string name="fahrenheit">华氏温度</string>
+    <string name="settings_sensor_current">传感器电流</string>
+    <string name="display_current">显示传感器电流消耗</string>
+    
+    <string name="copyright">Copyright ©2013–2014\nAll Rights Reserved.</string>
 </resources>

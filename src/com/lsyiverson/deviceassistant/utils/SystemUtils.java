@@ -18,7 +18,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -260,9 +259,6 @@ public class SystemUtils {
             hasMenuKey = ViewConfiguration.get(context).hasPermanentMenuKey();
             hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
             hasHomeKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_HOME);
-            Log.d("debug", "lisy===========menu:" + hasMenuKey);
-            Log.d("debug", "lisy===========back:" + hasBackKey);
-            Log.d("debug", "lisy===========home:" + hasHomeKey);
             try {
                 if (!hasMenuKey && !hasBackKey && !hasHomeKey) {
                     Display display = wm.getDefaultDisplay();

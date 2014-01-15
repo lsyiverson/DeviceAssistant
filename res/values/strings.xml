@@ -106,5 +106,9 @@
     <string name="settings_temperature_unit">Temperature Unit</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
+    <string name="settings_sensor_current">Sensor Current</string>
+    <string name="display_current">Display the current consumption of sensors</string>
+    
+    <string name="copyright">Copyright ©2013–2014\nAll Rights Reserved.</string>
 
 </resources>

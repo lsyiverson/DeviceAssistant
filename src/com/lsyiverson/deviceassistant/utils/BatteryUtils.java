@@ -16,7 +16,7 @@ public class BatteryUtils {
     private static final String FAHRENHEIT = " ℉";
     private static final String MV = " mV";
 
-    private static final String BATTERY_PREF = "batteryutils.pref";
+    private static final String SETTINGS_PREF = "settings.pref";
     private static final String PREF_USE_CELSIUS = "use_celsius";
 
     public static ArrayList<HashMap<String, Object>> getBatteryInfo(Context context, Intent intent) {
@@ -71,12 +71,12 @@ public class BatteryUtils {
     }
 
     public static void setUseCelsius(Context context, boolean use_celsius) {
-        SharedPreferences pref = context.getSharedPreferences(BATTERY_PREF, Context.MODE_PRIVATE);
+        SharedPreferences pref = context.getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE);
         pref.edit().putBoolean(PREF_USE_CELSIUS, use_celsius).commit();
     }
 
     public static boolean getUseCelsius(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(BATTERY_PREF, Context.MODE_PRIVATE);
+        SharedPreferences pref = context.getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE);
         return pref.getBoolean(PREF_USE_CELSIUS, true);
     }
 

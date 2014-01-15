@@ -7,6 +7,7 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -40,7 +41,23 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
 
     private HashMap<String, Integer> mSensorBackup = new HashMap<String, Integer>();
 
+    private static final String SETTINGS_PREF = "settings.pref";
+
+    private static final String PREF_DISPLAY_CURRENT = "display_current";
+
+    private boolean mIsDisplayCurrent = true;
+
     public SensorsFragment() {
+    }
+
+    public static void setDisplayCurrent(Context context, boolean use_celsius) {
+        SharedPreferences pref = context.getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE);
+        pref.edit().putBoolean(PREF_DISPLAY_CURRENT, use_celsius).commit();
+    }
+
+    public static boolean getDisplayCurrent(Context context) {
+        SharedPreferences pref = context.getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE);
+        return pref.getBoolean(PREF_DISPLAY_CURRENT, true);
     }
 
     @Override
@@ -53,6 +70,7 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
 
     @Override
     public void onResume() {
+        mIsDisplayCurrent = getDisplayCurrent(mContext);
         for (Sensor sensor : mSensorList) {
             mSensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
@@ -122,7 +140,6 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
                 float y_accelerometer = event.values[1];
                 float z_accelerometer = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz_acceleration, x_accelerometer, y_accelerometer, z_accelerometer));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_AMBIENT_TEMPERATURE:
                 boolean use_celsius = BatteryUtils.getUseCelsius(mContext);
@@ -133,35 +150,30 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
                     ambient_temperature = (float)(ambient_temperature * 1.8 + 32);
                     builder.append(mContext.getString(R.string.sensor_temperature_fahrenheit, ambient_temperature));
                 }
-                builder.append("\n");
                 break;
             case Sensor.TYPE_GAME_ROTATION_VECTOR:
                 float x_game_rotation = event.values[0];
                 float y_game_rotation = event.values[1];
                 float z_game_rotation = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz, String.format("%.5f", x_game_rotation), String.format("%.5f", y_game_rotation), String.format("%.5f", z_game_rotation)));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR:
                 float x_geomagnetic_rotation = event.values[0];
                 float y_geomagnetic_rotation = event.values[1];
                 float z_geomagnetic_rotation = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz, String.format("%.5f", x_geomagnetic_rotation), String.format("%.5f", y_geomagnetic_rotation), String.format("%.5f", z_geomagnetic_rotation)));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_GRAVITY:
                 float x_gravity = event.values[0];
                 float y_gravity = event.values[1];
                 float z_gravity = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz_acceleration, x_gravity, y_gravity, z_gravity));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_GYROSCOPE:
                 float x_gyroscore = event.values[0];
                 float y_gyroscore = event.values[1];
                 float z_gyroscore = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz_gyroscore, x_gyroscore, y_gyroscore, z_gyroscore));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_GYROSCOPE_UNCALIBRATED:
                 if (mSensorBackup.containsKey(sensor.getName())) {
@@ -177,26 +189,22 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
                 builder.append(mContext.getString(R.string.sensor_xyz_gyroscore, x_gyroscore_uncalibrated, y_gyroscore_uncalibrated, z_gyroscore_uncalibrated));
                 builder.append("\n");
                 builder.append(mContext.getString(R.string.sensor_xyz_gyroscore_estimated_drift, x_estimated_drift, y_estimated_drift, z_estimated_drift));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_LIGHT:
                 float light = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_light, light));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_LINEAR_ACCELERATION:
                 float x_linear_accelerometer = event.values[0];
                 float y_linear_accelerometer = event.values[1];
                 float z_linear_accelerometer = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz_acceleration, x_linear_accelerometer, y_linear_accelerometer, z_linear_accelerometer));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD:
                 float x_magnetic_field = event.values[0];
                 float y_magnetic_field = event.values[1];
                 float z_magnetic_field = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz_magnetic_field, x_magnetic_field, y_magnetic_field, z_magnetic_field));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_MAGNETIC_FIELD_UNCALIBRATED:
                 if (mSensorBackup.containsKey(sensor.getName())) {
@@ -212,48 +220,40 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
                 builder.append(mContext.getString(R.string.sensor_xyz_magnetic_field, x_uncali, y_uncali, z_uncali));
                 builder.append("\n");
                 builder.append(mContext.getString(R.string.sensor_xyz_magnetic_field_bias, x_bias, y_bias, z_bias));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_ORIENTATION:
                 float azimuth = event.values[0];
                 float pitch = event.values[1];
                 float roll = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_orientation, azimuth, pitch, roll));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_PRESSURE:
                 float pressure = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_pressure, pressure));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_PROXIMITY:
                 float distance = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_proximity, distance));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_RELATIVE_HUMIDITY:
                 float relative_humidity = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_relative_humidity, relative_humidity));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_ROTATION_VECTOR:
                 float x_rotation = event.values[0];
                 float y_rotation = event.values[1];
                 float z_rotation = event.values[2];
                 builder.append(mContext.getString(R.string.sensor_xyz, String.format("%.5f", x_rotation), String.format("%.5f", y_rotation), String.format("%.5f", z_rotation)));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_SIGNIFICANT_MOTION:
                 break;
             case Sensor.TYPE_STEP_COUNTER:
                 float step_offset = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_step, step_offset));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_STEP_DETECTOR:
                 float step_detector = event.values[0];
                 builder.append(mContext.getString(R.string.sensor_step, step_detector));
-                builder.append("\n");
                 break;
             case Sensor.TYPE_TEMPERATURE:
                 boolean is_use_celsius = BatteryUtils.getUseCelsius(mContext);
@@ -264,10 +264,12 @@ public class SensorsFragment extends Fragment implements SensorEventListener {
                     temperature = (float)(temperature * 1.8 + 32);
                     builder.append(mContext.getString(R.string.sensor_temperature_fahrenheit, temperature));
                 }
-                builder.append("\n");
                 break;
         }
-        builder.append(mContext.getString(R.string.sensor_current_consumption, sensor.getPower()));
+        if (mIsDisplayCurrent) {
+            builder.append("\n");
+            builder.append(mContext.getString(R.string.sensor_current_consumption, sensor.getPower()));
+        }
         map.put(Constants.LIST_VALUE, builder.toString());
         notifyDataSetChanged();
     };
