@@ -116,7 +116,7 @@ public class BatteryUtils {
                 break;
         }
         HashMap<String, Object> statusMap = new HashMap<String, Object>();
-        statusMap.put(Constants.LIST_NAME, context.getString(R.string.battery_plugged));
+        statusMap.put(Constants.LIST_NAME, context.getString(R.string.battery_status));
         statusMap.put(Constants.LIST_VALUE, battery_status);
         return statusMap;
     }

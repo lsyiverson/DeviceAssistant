@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">设备助手</string>
+    <string name="action_settings">设置</string>
+    <string name="title_section1">芯片</string>
+    <string name="title_section2">系统</string>
+    <string name="title_section3">电池</string>
+    <string name="title_section4">传感器</string>
+    <string name="title_section5">网络</string>
+    
+    <!-- Soc information -->
+    <string name="cpu_processor">处理器</string>
+    <string name="cpu_core_count">CPU核心</string>
+    <string name="cpu_revision">版本</string>
+    <string name="cpu_clock_speed">时钟频率</string>
+    <string name="cpu_cores">&#160;&#160;&#160;&#160;核心 %d</string>
+    <string name="cpu_stoped">停止</string>
+    <string name="gpu_vendor">GPU制造商</string>
+    <string name="gpu_renderer">GPU型号</string>
+    
+    <!-- System information -->
+    <string name="system_brand">品牌</string>
+    <string name="system_model">型号</string>
+    <string name="system_manufacturer">制造商</string>
+    <string name="system_board">平台</string>
+    <string name="system_display">显示版本</string>
+    <string name="system_hardware">硬件</string>
+    <string name="system_android_version">Android版本</string>
+    <string name="system_kernel_arch">内核架构</string>
+    <string name="system_kernel_version">内核版本</string>
+    <string name="system_screen_resolution">屏幕分辨率</string>
+    <string name="system_real_resolution">真实分辨率</string>
+    <string name="system_screen_density">屏幕像素密度</string>
+    <string name="system_total_ram">总内存</string>
+    <string name="system_available_ram">可用内存</string>
+    <string name="system_internal_storage">内部存储空间</string>
+    <string name="system_available_storage">可用存储空间</string>
+    <string name="system_root_access">是否Root</string>
+    <string name="system_root_yes">是</string>
+    <string name="system_root_no">否</string>
+    
+    <!-- System information -->
+    <string name="battery_health">健康状况</string>
+    <string name="battery_health_cold">温度过低</string>
+    <string name="battery_health_dead">损坏</string>
+    <string name="battery_health_good">良好</string>
+    <string name="battery_health_overheat">温度过热</string>
+    <string name="battery_health_over_voltage">电压过高</string>
+    <string name="battery_health_unknown">未知</string>
+    <string name="battery_health_unspecified_failure">未知错误</string>
+
+    <string name="battery_level">电量</string>
+
+    <string name="battery_plugged">电源</string>
+    <string name="battery_plugged_non">电池</string>
+    <string name="battery_plugged_ac">交流电</string>
+    <string name="battery_plugged_usb">USB充电</string>
+    <string name="battery_plugged_wireless">无线充电</string>
+    
+    <string name="battery_status">状态</string>
+    <string name="battery_status_charging">充电中</string>
+    <string name="battery_status_discharging">放电中</string>
+    <string name="battery_status_full">已充满</string>
+    <string name="battery_status_not_charging">未充电</string>
+    <string name="battery_status_unknown">未知</string>
+    
+    <string name="battery_technology">电池技术</string>
+    
+    <string name="battery_temperature">温度</string>
+    
+    <string name="battery_voltage">电压</string>
+    
+    <string name="battery_scale">最大电池容量</string>
+    
+    <!-- Sensor information -->
+    <string name="sensor_current_consumption">电流消耗: %.2f mA</string>
+    <string name="sensor_xyz_acceleration">X=%1$.2f m/s&#178; Y=%2$.2f m/s&#178; Z=%3$.2f m/s&#178;</string>
+    <string name="sensor_temperature_celsius">%.1f ℃</string>
+    <string name="sensor_temperature_fahrenheit">%.1f ℉</string>
+    <string name="sensor_xyz">X=%1$s Y=%2$s Z=%3$s</string>
+    <string name="sensor_xyz_gyroscore">X=%1$.2f rad/s Y=%2$.2f rad/s Z=%3$.2f rad/s</string>
+    <string name="sensor_xyz_gyroscore_estimated_drift">预估漂移 X=%1$.2f rad/s Y=%2$.2f rad/s Z=%3$.2f rad/s</string>
+    <string name="sensor_light">%.2f lux</string>
+    <string name="sensor_xyz_magnetic_field">X=%1$.2f μT Y=%2$.2f μT Z=%3$.2f μT</string>
+    <string name="sensor_xyz_magnetic_field_bias">预估偏差 X=%1$.2f μT Y=%2$.2f μT Z=%3$.2f μT</string>
+    <string name="sensor_orientation">方位=%1$.2f° 倾斜=%2$.2f° 翻转=%3$.2f°</string>
+    <string name="sensor_pressure">%.2f hPa</string>
+    <string name="sensor_proximity">%.2f cm</string>
+    <string name="sensor_relative_humidity">%.2f&#37;</string>
+    <string name="sensor_step">%.1f 步</string>
+    
+    <!-- Network information -->
+    <string name="network_operator_name">运营商名称</string>
+    <string name="network_operator_none">无</string>
+    <string name="network_type_bluetooth">蓝牙</string>
+    <string name="network_type_dummy">虚拟网络</string>
+    <string name="network_type_ethernet">以太网</string>
+    <string name="network_type_mobile">移动网络</string>
+    <string name="network_type_wifi">无线网络</string>
+    <string name="network_type_wimax">WiMAX</string>
+    <string name="network_type">网络类型</string>
+    <string name="network_no_network">无网络</string>
+    <string name="network_access_point">接入点</string>
+    <string name="network_mac_address">MAC地址</string>
+    <string name="network_phone_number">手机号码</string>
+    <string name="network_imei">IMEI/MEID</string>
+    <string name="network_imsi">IMSI</string>
+    <string name="network_sim_card_number">SIM卡号</string>
+
+    <string name="title_activity_settings">设置</string>
+    <string name="settings_temperature_unit">温度单位</string>
+    <string name="celsius">摄氏温度</string>
+    <string name="fahrenheit">华氏温度</string>
+</resources>
