@@ -95,7 +95,10 @@ public class NetworkUtils {
     public static String getMacAddress(Context context) {
         WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        String macAddress = wifiInfo.getMacAddress().toUpperCase();
+        String macAddress = wifiInfo.getMacAddress();
+        if (TextUtils.isEmpty(macAddress)) {
+            macAddress = macAddress.toUpperCase();
+        }
         return macAddress;
     }
 
