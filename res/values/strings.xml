@@ -110,5 +110,6 @@
     <string name="display_current">Display the current consumption of sensors</string>
     
     <string name="copyright">Copyright ©2013–2014\nAll Rights Reserved.</string>
+    <string name="data_declaration">All of the data is read from the system. It may has some differences between the device manufactor\'s data because of the different algorithm.</string>
 
 </resources>

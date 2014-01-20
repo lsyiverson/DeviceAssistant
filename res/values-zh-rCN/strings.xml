@@ -116,4 +116,5 @@
     <string name="display_current">显示传感器电流消耗</string>
     
     <string name="copyright">Copyright ©2013–2014\nAll Rights Reserved.</string>
+    <string name="data_declaration">所有数据均从系统读取。由于算法的不同，可能与厂商提供的数据略有差异。</string>
 </resources>
