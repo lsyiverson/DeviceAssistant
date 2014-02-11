@@ -80,7 +80,7 @@
     <string name="sensor_orientation">Azimuth=%1$.2f° Pitch=%2$.2f° Roll=%3$.2f°</string>
     <string name="sensor_pressure">%.2f hPa</string>
     <string name="sensor_proximity">%.2f cm</string>
-    <string name="sensor_relative_humidity">%.2f&#37;</string>
+    <string name="sensor_relative_humidity">%.2f%%</string>
     <string name="sensor_step">%.1f step(s)</string>
 
     <!-- Network information -->

@@ -87,7 +87,7 @@
     <string name="sensor_orientation">方位=%1$.2f° 倾斜=%2$.2f° 翻转=%3$.2f°</string>
     <string name="sensor_pressure">%.2f hPa</string>
     <string name="sensor_proximity">%.2f cm</string>
-    <string name="sensor_relative_humidity">%.2f&#37;</string>
+    <string name="sensor_relative_humidity">%.2f%%</string>
     <string name="sensor_step">%.1f 步</string>
     
     <!-- Network information -->
